@@ -9,11 +9,11 @@ import {
 import { Howl } from 'howler';
 
 export const defaultSounds = {
-	key: new Howl({ src: defaultKey, preload: true }),
-	key2: new Howl({ src: defaultKey2, preload: true }),
-	space: new Howl({ src: defaultSpace, preload: true }),
-	enter: new Howl({ src: defaultEnter, preload: true }),
-	delete: new Howl({ src: defaultDelete, preload: true }),
+	key: new Howl({ src: defaultKey, preload: true, html5: true }),
+	key2: new Howl({ src: defaultKey2, preload: true, html5: true }),
+	space: new Howl({ src: defaultSpace, preload: true, html5: true }),
+	enter: new Howl({ src: defaultEnter, preload: true, html5: true }),
+	delete: new Howl({ src: defaultDelete, preload: true, html5: true }),
 };
 
 export const defaultScheme = {

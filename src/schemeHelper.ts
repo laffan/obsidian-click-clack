@@ -32,11 +32,11 @@ export class SchemeHelper {
 		const deleteStr = await this.getBase64URL(scheme.sounds.delete);
 
 		const sounds = {
-			key: new Howl({ src: keyStr, preload: true }),
-			key2: new Howl({ src: key2Str, preload: true }),
-			enter: new Howl({ src: enterStr, preload: true }),
-			space: new Howl({ src: spaceStr, preload: true }),
-			delete: new Howl({ src: deleteStr, preload: true }),
+			key: new Howl({ src: keyStr, preload: true, html5: true }),
+			key2: new Howl({ src: key2Str, preload: true, html5: true }),
+			enter: new Howl({ src: enterStr, preload: true, html5: true }),
+			space: new Howl({ src: spaceStr, preload: true, html5: true }),
+			delete: new Howl({ src: deleteStr, preload: true, html5: true }),
 		};
 
 		return sounds;
