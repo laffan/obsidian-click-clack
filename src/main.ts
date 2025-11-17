@@ -1,4 +1,5 @@
 import { Plugin, App, PluginManifest } from 'obsidian';
+import { Howler } from 'howler';
 
 import { DEFAULT_MAP, keySoundMap } from './keySoundMap';
 import { ClickClackSettings, DEFAULT_SETTINGS_V1 } from './settings';
@@ -26,6 +27,9 @@ export default class ClickClackPlugin extends Plugin {
 	}
 
 	async onload() {
+		// Increase HTML5 audio pool size for better concurrent playback on iOS
+		Howler.html5PoolSize = 20;
+
 		await this.loadSettings();
 		this.addSettingTab(new ClickClackSettingTab(this.app, this));
 		this.sounds = await this.schemeHelper.loadScheme(
