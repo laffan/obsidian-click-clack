@@ -31,6 +31,30 @@ export class ClickClackSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
+			.setName('Enable modifier key sounds')
+			.setDesc('Play sounds when pressing Shift, Ctrl, Alt, or Command keys')
+			.addToggle((toggle) => {
+				toggle
+					.setValue(this.plugin.settings.enableModifierKeys ?? false)
+					.onChange(async (value) => {
+						this.plugin.settings.enableModifierKeys = value;
+						await this.plugin.saveSettings();
+					});
+			});
+
+		new Setting(containerEl)
+			.setName('Enable arrow key sounds')
+			.setDesc('Play sounds when pressing arrow keys')
+			.addToggle((toggle) => {
+				toggle
+					.setValue(this.plugin.settings.enableArrowKeys ?? false)
+					.onChange(async (value) => {
+						this.plugin.settings.enableArrowKeys = value;
+						await this.plugin.saveSettings();
+					});
+			});
+
+		new Setting(containerEl)
 			.setName(i18n.t('settings.volume.name'))
 			.setDesc(i18n.t('settings.volume.desc'))
 			.addSlider((slider) => {

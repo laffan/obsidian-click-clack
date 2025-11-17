@@ -201,14 +201,14 @@ export const DEFAULT_MAP: keySoundMap = {
 	Tab: 'key',
 	Capslock: '', // 打字机专用声音
 	Enter: 'enter',
-	ShiftLeft: '', // 需要加逻辑判断了
-	ShiftRight: '',
-	ControlLeft: '',
-	ControlRight: '',
-	MetaLeft: '',
-	MetaRight: '',
-	AltLeft: '',
-	AltRight: '',
+	ShiftLeft: 'key', // 需要加逻辑判断了
+	ShiftRight: 'key',
+	ControlLeft: 'key',
+	ControlRight: 'key',
+	MetaLeft: 'key',
+	MetaRight: 'key',
+	AltLeft: 'key',
+	AltRight: 'key',
 	Space: 'space',
 	ContextMenu: '', // code 93, right cmd
 
@@ -231,10 +231,10 @@ export const DEFAULT_MAP: keySoundMap = {
 	PageDown: '',
 
 	// arrow pad
-	ArrowLeft: '',
-	ArrowRight: '',
-	ArrowUp: '',
-	ArrowDown: '',
+	ArrowLeft: 'key',
+	ArrowRight: 'key',
+	ArrowUp: 'key',
+	ArrowDown: 'key',
 
 	// numpad
 	// TODO: 回校后用大键盘和 MacOS 键盘调试这个

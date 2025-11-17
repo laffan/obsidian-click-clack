@@ -11,13 +11,18 @@ export class SchemeHelper {
 	}
 
 	async getBase64URL(path: string) {
-		const data = await new Blob(
-			[await this.app.vault.adapter.readBinary(path)],
-			{
-				type: 'audio/wav',
-			}
-		).arrayBuffer();
-		const b64 = btoa(String.fromCharCode(...new Uint8Array(data)));
+		const data = await this.app.vault.adapter.readBinary(path);
+		const uint8Array = new Uint8Array(data);
+
+		// Convert to base64 in chunks to avoid stack overflow with large files
+		let binary = '';
+		const chunkSize = 8192; // Process 8KB at a time
+		for (let i = 0; i < uint8Array.length; i += chunkSize) {
+			const chunk = uint8Array.subarray(i, i + chunkSize);
+			binary += String.fromCharCode.apply(null, Array.from(chunk));
+		}
+
+		const b64 = btoa(binary);
 		return 'data:audio/wav;base64,' + b64;
 	}
 

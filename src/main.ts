@@ -40,9 +40,24 @@ export default class ClickClackPlugin extends Plugin {
 			'keydown',
 			(evt: KeyboardEvent) => {
 				if (!this.settings.enabled) return;
-				if (evt.ctrlKey) return;
-				if (evt.metaKey) return;
-				if (evt.altKey && !evt.ctrlKey && !evt.metaKey) return;
+
+				const isModifierKey = ['ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight',
+					'MetaLeft', 'MetaRight', 'AltLeft', 'AltRight'].includes(evt.code);
+				const isArrowKey = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(evt.code);
+
+				// Skip if modifier keys are disabled and this is a modifier key
+				if (isModifierKey && !this.settings.enableModifierKeys) return;
+
+				// Skip if arrow keys are disabled and this is an arrow key
+				if (isArrowKey && !this.settings.enableArrowKeys) return;
+
+				// Skip if modifier keys are held down (except when pressing the modifier itself)
+				if (!isModifierKey) {
+					if (evt.ctrlKey) return;
+					if (evt.metaKey) return;
+					if (evt.altKey && !evt.ctrlKey && !evt.metaKey) return;
+				}
+
 				// if (evt.repeat) return;
 
 				// this.stopSounds(); // stop overlaid

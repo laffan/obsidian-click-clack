@@ -15,6 +15,8 @@ export interface ClickClackSettings {
 	enabled: boolean;
 	activeScheme: Scheme;
 	volumn: number;
+	enableModifierKeys: boolean;
+	enableArrowKeys: boolean;
 }
 
 export const DEFAULT_SETTINGS_V1: ClickClackSettings = {
@@ -32,4 +34,6 @@ export const DEFAULT_SETTINGS_V1: ClickClackSettings = {
 		},
 	},
 	volumn: 100,
+	enableModifierKeys: false,
+	enableArrowKeys: false,
 };
